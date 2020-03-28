@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './global.css'
+import './global.scss'
 
 import Logon from './pages/Logon';
 
