@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from './Header';
 
 function App() {
-  let counter = 0;
+  let [counter, setCounter] = useState(0);
 
   function increment() {
-    counter += 1;
-
-    console.log(counter); // Variavel é alterada, mas não refletida, por causa do conceito de Estado
+    setCounter(counter + 1);
   }
 
   return (
