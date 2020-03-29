@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi';
 
+import SweetAlert from '../../components/SweetAlert';
 import api from '../../services/api';
 import './styles.scss';
-
 import logoImg from '../../assets/logo.svg';
 
 export default function Register() {
@@ -29,10 +29,16 @@ export default function Register() {
 
         try{
             const response = await api.post('/ongs', data);
-            alert(`Seu ID de acesso ${response.data.id}`);
+            SweetAlert.fire({
+                title: 'Seu ID de acesso',
+                text: response.data.id
+            });
             history.push('/');
         } catch (err) {
-            alert('Erro no cadastro, tente novamente.')
+            SweetAlert.fire({
+                title: 'Erro no cadastro',
+                text: 'Tente novamente'
+            });
         }
     }
 

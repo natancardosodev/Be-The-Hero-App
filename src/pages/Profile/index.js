@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 
-import api from '../../services/api';
 import './styles.scss';
 
+import SweetAlert from '../../components/SweetAlert';
+import api from '../../services/api';
 import logoImg from '../../assets/logo.svg';
 
 export default function Profile() {
@@ -34,7 +35,10 @@ export default function Profile() {
 
             setIncidents(incidents.filter(incident => incident.id !== id));
         } catch (err) {
-            alert('Erro ao deletar caso, tente novamente.');
+            SweetAlert.fire({
+                title: 'Erro ao deletar caso',
+                text: 'Tente novamente'
+            });
         }
     }
 
